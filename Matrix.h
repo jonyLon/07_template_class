@@ -27,6 +27,7 @@ public:
 			}
 			out << "\n";
 		}
+		out << endl;
 		return out;
 	}
 	friend istream& operator>>(istream& in, const Matrix<T>& data) {
@@ -58,7 +59,7 @@ public:
 		return true;
 	}
 	bool operator !=(const Matrix<T>& other) const {
-		return !operator ==;
+		return !operator ==(other);
 	}
 	Matrix<T> operator+(const T& value) const {
 		Matrix<T>tmp(*this);
@@ -80,7 +81,7 @@ public:
 		}
 		return tmp;
 	}
-	void operator+=(const T& value) const {
+	void operator+=(const T& value) {
 		for (int i = 0; i < rows; i++)
 		{
 			for (int j = 0; j < cols; j++) {
@@ -88,6 +89,7 @@ public:
 			}
 		}
 	}
+
 	T max() const {
 		T max = arr[0][0];
 		for (int i = 0; i < rows; i++)
